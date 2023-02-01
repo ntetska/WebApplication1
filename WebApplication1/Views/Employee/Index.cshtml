@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+@model System.Collections.Generic.List<WebApplication1.Domain.Employee>
+
+<div>
+    <h1>Employees</h1>
+    <table>
+        <tr>
+            <th class="p-3">Name</th>
+            <th class="p-3">Surname</th>
+            <th class="p-3">Active</th>
+            <th class="p-3">Date</th>
+            <th class="p-3">Title</th>
+            <th class="p-3">Email</th>
+            <th class="p-3">Phone</th>
+            <th class="p-3">Actions</th>
+            
+        </tr>
+    @foreach (var item in Model)
+    {
+        
+            <tr>
+                <td class ="p-3">@item.FirstName</td>
+                <td class="p-3">@item.LastName</td>
+                <td class="p-3">@item.Active</td>
+                <td class="p-3">@item.Date</td>
+                <td class="p-3">@item.Title</td>
+                <td class="p-3">@item.Email</td>
+                <td class="p-3">@item.Phone</td>
+                <td class="p-3">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+           
+    }
+    </table>
+    
+</div>
+
+
