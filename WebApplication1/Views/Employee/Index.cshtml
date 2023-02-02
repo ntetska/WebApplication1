@@ -21,12 +21,11 @@
         </tr>
     @foreach (var item in Model)
     {
-        
             <tr>
                 <td class ="p-3">@item.FirstName</td>
                 <td class="p-3">@item.LastName</td>
                 <td class="p-3">@item.Active</td>
-                <td class="p-3">@item.Date</td>
+                <td class="p-3">@item.Date.Value.ToShortDateString()</td>
                 <td class="p-3">@item.Title</td>
                 <td class="p-3">@item.Email</td>
                 <td class="p-3">@item.Phone</td>

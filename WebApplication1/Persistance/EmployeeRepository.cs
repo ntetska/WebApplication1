@@ -1,5 +1,7 @@
 ﻿using Application.Data;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 using WebApplication1.Domain;
 using WebApplication1.Services;
 
@@ -8,6 +10,9 @@ namespace WebApplication1.Persistance
     public class EmployeeRepository : IRepository
     {
         private readonly ApplicationDbContext _context;
+
+        public object FirstName { get; private set; }
+
         public EmployeeRepository(ApplicationDbContext context)
         {
             _context = context;
@@ -37,7 +42,7 @@ namespace WebApplication1.Persistance
         }
         public async Task<bool> UpdateAsync(Employee employee)
         {
-            try
+                try
             {
                 _context.Employees.Update(employee);
                 await _context.SaveChangesAsync();
@@ -66,6 +71,7 @@ namespace WebApplication1.Persistance
 
                 return false;
             }
+
         }
     }
 

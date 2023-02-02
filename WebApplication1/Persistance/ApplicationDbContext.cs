@@ -16,5 +16,4 @@ namespace Application.Data
         public DbSet<Employee> Employees { get; set; }
 
     }
-    
 }

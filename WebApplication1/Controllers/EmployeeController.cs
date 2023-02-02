@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using WebApplication1.Domain;
 using WebApplication1.Models;
 using WebApplication1.Services;
 
@@ -11,9 +13,12 @@ namespace WebApplication1.Controllers
 
         private readonly IRepository _employeeService;
 
+        public object FirstName { get; private set; }
+
         public EmployeeController(IRepository employeeService)
         {
             _employeeService = employeeService;
+        
         }
         public async Task<IActionResult> Index()
         {
@@ -25,11 +30,17 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        
+        public object GetFirstName()
+        {
+
+            return FirstName;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Active,Date,Title,Email,Phone")] Domain.Employee employee)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Active,Date,Title,Email,Phone")] Domain.Employee employee, object firstName)
         {
+            
             if (ModelState.IsValid)
             {
                 await _employeeService.AddAsync(employee);
@@ -38,6 +49,7 @@ namespace WebApplication1.Controllers
             }
             return View(employee);
         }
+        
 
         public async Task<IActionResult> Update(long? id)
         {
@@ -102,4 +114,4 @@ namespace WebApplication1.Controllers
             return RedirectToAction(nameof(Index));
         }
     }
-    }
+}
