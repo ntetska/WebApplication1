@@ -7,9 +7,9 @@ namespace WebApplication1.Domain
     public class Employee
     {
         public int? Id { get; set; }
-        //[Range(8,20, ErrorMessage = "First Name must be between 8 and 20")]
+        [StringLength(20)]
         public string? FirstName { get; set; }
-        //[Range(8,20, ErrorMessage = "Last Name must be between 8 and 20")]
+        [StringLength(20)]
         public string? LastName { get; set; }
         public bool? Active { get; set; }
         [DataType(DataType.Date)]
@@ -18,6 +18,7 @@ namespace WebApplication1.Domain
         [Required(ErrorMessage = "Email is required")]
         public string? Email { get; set; }
         [Required(ErrorMessage = "Phone is required")]
+        [StringLength(10)]
         public string? Phone { get; set; }
 
 

@@ -25,7 +25,14 @@
                 <td class ="p-3">@item.FirstName</td>
                 <td class="p-3">@item.LastName</td>
                 <td class="p-3">@item.Active</td>
-                <td class="p-3">@item.Date.Value.ToShortDateString()</td>
+                @if(item.Date != null)
+                {
+                    <td class="p-3">@item.Date.Value.ToShortDateString()</td>
+                }
+                else
+                {
+                    <td class="p-3">NULL</td>
+                }
                 <td class="p-3">@item.Title</td>
                 <td class="p-3">@item.Email</td>
                 <td class="p-3">@item.Phone</td>
